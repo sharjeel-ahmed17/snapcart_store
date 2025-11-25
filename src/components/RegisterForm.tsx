@@ -8,6 +8,8 @@ import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+// import { signIn } from "@/auth";
 
 type propType = {
   prevStep : (s : number)=>void
@@ -117,6 +119,7 @@ const router = useRouter()
             <Button
               variant="outline"
               className="w-full flex items-center justify-center gap-2"
+              onClick={()=>signIn("google")}
             >
               <img
                 src="https://www.svgrepo.com/show/475656/google-color.svg"
