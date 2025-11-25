@@ -1,0 +1,4 @@
+sharjeelahmedofficial2123_db_user
+qpHEK4DEl5YlkBar
+
+mongodb+srv://sharjeelahmedofficial2123_db_user:qpHEK4DEl5YlkBar@cluster0.7sydvtj.mongodb.net/
