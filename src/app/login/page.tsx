@@ -18,16 +18,18 @@ export default function Login() {
   const [loading , setLoading] = useState(false)
 const router = useRouter()
 const section = useSession()
-// console.log(section);
+console.log(section);
 
   const handleSignIn = async (e : React.FormEvent)=>{
 
     e.preventDefault()
 setLoading(true)
 try {
-  await signIn("credentials",  {
+  const res = await signIn("credentials",  {
     email , password
   } , )
+  console.log(res);
+  
   setLoading(false)
 } catch (error) {
   console.log(error);
