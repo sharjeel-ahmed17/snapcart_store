@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Mail, User, Lock, ArrowLeft, Eye, Loader2 } from "lucide-react";
-import Link from "next/link";
+
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -31,6 +31,7 @@ const router = useRouter()
       })
       console.log(result);
       setLoading(false)
+      router.push("/login")
       
     } catch (error) {
       console.log(error);
@@ -116,10 +117,10 @@ const router = useRouter()
               <Separator className="flex-1" />
             </div>
 
-            <Button
-              variant="outline"
+            <div
+              // variant="outline"
               className="w-full flex items-center justify-center gap-2"
-              onClick={()=>signIn("google")}
+              onClick={()=>signIn("google" , {callbackUrl  : "/"})}
             >
               <img
                 src="https://www.svgrepo.com/show/475656/google-color.svg"
@@ -127,7 +128,7 @@ const router = useRouter()
                 className="h-4 w-4"
               />
               Continue with Google
-            </Button>
+            </div>
 
             <p className="text-center text-sm mt-3 text-gray-500">
               Already have an account?{" "}
@@ -136,6 +137,18 @@ const router = useRouter()
               </Button>
             </p>
           </form>
+          {/* <Button
+              variant="outline"
+              className="w-full flex items-center justify-center gap-2"
+              onClick={()=>signIn("google" , {callbackUrl  : "/"})}
+            >
+              <img
+                src="https://www.svgrepo.com/show/475656/google-color.svg"
+                alt="google"
+                className="h-4 w-4"
+              />
+              Continue with Google
+            </Button> */}
         </CardContent>
       </Card>
     </div>

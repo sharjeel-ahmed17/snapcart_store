@@ -1,16 +1,7 @@
+import { IUser } from "@/types/types";
 import mongoose from "mongoose";
-import { deflate } from "zlib";
 
 
-interface IUser{
-    _id? : mongoose.Types.ObjectId
-    name : string
-    email : string
-    password? : string
-    mobile? : string
-    role : "user" | "deliveryBoy" | "admin",
-    image? : string
-}
 const UserSchema= new mongoose.Schema<IUser>({
     name: {
         type : String
