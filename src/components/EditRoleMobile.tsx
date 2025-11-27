@@ -7,14 +7,14 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils'; // Standard Shadcn utility
 import axios from 'axios';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/router';
 
 
 
 const EditRoleMobile = () => {
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
   const [mobile , setMobile] = useState("")
-
+const router= useRouter()
 const data= {
     role : selectedRole,
     mobile
@@ -44,7 +44,8 @@ const data= {
     try {
         const res = await axios.post("/api/user/edit-role-mobile" , data)
         // console.log("user data", res?.data);
-        redirect("/")
+        // redirect("/")
+        router.push("/")
         
     } catch (error) {
         console.log(error);

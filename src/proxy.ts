@@ -1,4 +1,4 @@
-import { url } from "inspector";
+
 import { getToken } from "next-auth/jwt";
 import { NextResponse, NextRequest } from "next/server";
 
@@ -20,15 +20,20 @@ export async function proxy(req: NextRequest) {
   }
 
   const role = token.role;
-  if(pathname.startsWith("/user") && role=="user" ){
-    return NextResponse.redirect(new URL("/unauthorized" , req.url))
-  } 
-  if(pathname.startsWith("/delivery") && role=="deliveryBoy" ){
-    return NextResponse.redirect(new URL("/unauthorized" , req.url))
-  } 
-  if(pathname.startsWith("/admin") && role=="admin" ){
-    return NextResponse.redirect(new URL("/unauthorized" , req.url))
-  } 
+  
+
+  // ✅ Role-based protection
+  if (pathname.startsWith("/admin") && role !== "admin") {
+    return NextResponse.redirect(new URL("/unauthorized", req.url));
+  }
+
+  if (pathname.startsWith("/user") && role !== "user") {
+    return NextResponse.redirect(new URL("/unauthorized", req.url));
+  }
+
+  if (pathname.startsWith("/delivery") && role !== "deliveryBoy") {
+    return NextResponse.redirect(new URL("/unauthorized", req.url));
+  }
   return NextResponse.next()
 }
 export const config = {
