@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils'; // Standard Shadcn utility
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 
 
 
@@ -15,6 +16,7 @@ const EditRoleMobile = () => {
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
   const [mobile , setMobile] = useState("")
 const router= useRouter()
+const {update} = useSession()
 const data= {
     role : selectedRole,
     mobile
@@ -46,6 +48,7 @@ const data= {
         // console.log("user data", res?.data);
         // redirect("/")
         router.push("/")
+        await update({role : selectedRole})
         
     } catch (error) {
         console.log(error);

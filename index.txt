@@ -2,3 +2,8 @@ sharjeelahmedofficial2123_db_user
 qpHEK4DEl5YlkBar
 
 mongodb+srv://sharjeelahmedofficial2123_db_user:qpHEK4DEl5YlkBar@cluster0.7sydvtj.mongodb.net/
+
+
+{ data: undefined, status: 'loading', update: [AsyncFunction: update] }
+http://localhost:3000/login?error=AccessDenied
+http://localhost:3000/login?error=Configuration
